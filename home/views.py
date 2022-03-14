@@ -3,30 +3,24 @@ from datetime import datetime
 from home.models import Contact
 from django.contrib import messages
 
-# Create your views here.
-def index(request):
-    context = {
-        "variable1":"Harry is great",
-        "variable2":"Rohan is great"
-    } 
-    return render(request, 'index.html', context)
-    # return HttpResponse("this is homepage")
 
-def about(request):
-    return render(request, 'about.html') 
+def home (request):
+    return render(request, 'index.html')
 
-def services(request):
-    return render(request, 'services.html')
- 
+def about (request):
+    return HttpResponse("This is the about page")
 
-def contact(request):
-    if request.method == "POST":
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        phone = request.POST.get('phone')
-        desc = request.POST.get('desc')
-        contact = Contact(name=name, email=email, phone=phone, desc=desc, date = datetime.today())
-        contact.save()
-        messages.success(request, 'Your message has been sent!')
-    return render(request, 'contact.html')
+def books (request):
+    return render(request, 'books.html')
+
+def documentation (request):
+    return render(request, 'documentation.html')
+
+def course (request):
+    return render(request, 'course.html')
+    
+    # return HttpResponse("This is the contact page")
+
+def community (request):
+    return render(request, 'community.html')
  
